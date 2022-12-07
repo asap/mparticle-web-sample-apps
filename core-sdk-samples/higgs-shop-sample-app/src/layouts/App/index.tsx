@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { useEffect } from 'react';
 import mParticle from '@mparticle/web-sdk';
+import GA4 from '@mparticle/web-google-analytics-4-server-kit';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { NavigationMenu } from '../../components/NavigationMenu';
@@ -91,6 +92,7 @@ const App = () => {
 
     useEffect(() => {
         if (apiKey) {
+            GA4.register(mParticleConfig);
             mParticle.init(apiKey, mParticleConfig);
         } else {
             console.error('Please add your mParticle API Key');
